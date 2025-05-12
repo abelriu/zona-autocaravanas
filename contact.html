@@ -149,22 +149,20 @@ https://templatemo.com/tm-559-zay-shop
         crossorigin=""></script>
 
 <script>
-  // Centrem el mapa a Andorra la Vella
-  var mymap = L.map('mapid').setView([42.5078, 1.5211], 13);
+  document.addEventListener("DOMContentLoaded", function () {
+    var mymap = L.map('mapid').setView([42.5078, 1.5211], 13);
 
-  // Afegim el tile layer d’OpenStreetMap (sense token)
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-  }).addTo(mymap);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
 
-  // Afegim marcador amb popup
-  L.marker([42.5078, 1.5211]).addTo(mymap)
-    .bindPopup("<b>AX Caravan</b><br>Andorra la Vella").openPopup();
+    L.marker([42.5078, 1.5211]).addTo(mymap)
+      .bindPopup("<b>AX Caravan</b><br>Andorra la Vella").openPopup();
 
-  // Desactivem zoom amb roda i gestos tàctils si vols
-  mymap.scrollWheelZoom.disable();
-  mymap.touchZoom.disable();
+    mymap.scrollWheelZoom.disable();
+    mymap.touchZoom.disable();
+  });
 </script>
 <!-- Final Mapa -->
     <!-- Start Contact -->
