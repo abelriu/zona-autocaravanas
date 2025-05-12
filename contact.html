@@ -112,7 +112,7 @@ https://templatemo.com/tm-559-zay-shop
         </div>
     </div>
 
-    <!-- Start Map -->
+    <!-- Start Map Original
     <div id="mapid" style="width: 100%; height: 300px;"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <script>
@@ -135,14 +135,37 @@ https://templatemo.com/tm-559-zay-shop
         mymap.touchZoom.disable();
     </script>
     <!-- Ena Map -->
+    <!-- Inici Mapa -->
+    <div id="mapid" style="width: 100%; height: 300px;"></div>
 
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdlxXYG3nZ4H8OeIQ1qfXkLlONQ64Wn4CwBhA0xCxy2o0wvoJalXaVUearIO8hiXZ5V3ynxwA=="
+            crossorigin=""></script>
+
+    <script>
+        var mymap = L.map('mapid').setView([42.5078, 1.5211], 13);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/axcaravan/cmalc6t3s013n01skfpmfb4hz/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXhjYXJhdmFuIiwiYSI6ImNtYWxjMzA1eTA2dWsybHNkOXlhZno3d2wifQ.CN_q59myg2E1y3gDOuNBGQ', {
+        maxZoom: 18,
+        attribution: '© <a href="https://templatemo.com/">Templatemo</a> | Dades: <a href="https://www.openstreetmap.org/">OpenStreetMap</a> & <a href="https://www.mapbox.com/">Mapbox</a>',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(mymap);
+
+    L.marker([42.5078, 1.5211]).addTo(mymap)
+        .bindPopup("<b>AX Caravan</b><br>Andorra la Vella").openPopup();
+
+    mymap.scrollWheelZoom.disable();
+    mymap.touchZoom.disable();
+</script>
+<!-- Final Mapa -->
     <!-- Start Contact -->
     <div class="container py-5">
         <div class="row py-5">
             <form class="col-md-9 m-auto" method="post" role="form">
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">Name</label>
+                        <label for="inputname">Nom</label>
                         <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Name">
                     </div>
                     <div class="form-group col-md-6 mb-3">
