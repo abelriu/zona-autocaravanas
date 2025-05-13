@@ -115,30 +115,18 @@
             document.getElementById("contact-form").addEventListener("submit", function (e) {
               e.preventDefault();
 
-              document.getElementById("timestamp").value = new Date().toLocaleString();
-
               const formData = new FormData();
-            formData.append("name", document.getElementById("name").value);
-            formData.append("email", document.getElementById("email").value);
-            formData.append("subject", document.getElementById("subject").value);
-            formData.append("message", document.getElementById("message").value);
-            formData.append("timestamp", new Date().toLocaleString());
+              formData.append("name", document.getElementById("name").value);
+              formData.append("email", document.getElementById("email").value);
+              formData.append("subject", document.getElementById("subject").value);
+              formData.append("message", document.getElementById("message").value);
+              formData.append("timestamp", new Date().toLocaleString());
 
-            fetch("https://script.google.com/macros/s/AKfycbyhexQ1ij1JG12k9v_MZGbWiLzdOtFsbSCLKeC7PwVcGOoAVPT3qQCDi8K5d2mGUvsaBA/exec", {
-              method: "POST",
-              body: formData
-            })
-            .then(response => response.json())
-            .then(res => {
-              alert("Missatge enviat correctament!");
-              document.getElementById("contact-form").reset();
-            })
-            .catch(error => {
-              alert("Error en enviar el formulari.");
-              console.error("Error:", error);
-            });
-              .then(response => response.json())
-              .then(res => {
+              fetch("https://script.google.com/macros/s/AKfycbxTB5ROST8pJeRpeHlA2dfqHoFgK9-BPtblvGQaEz7Nx1D7UOifU1_jp1ZIGNwPlqFyzQ/exec", {
+                method: "POST",
+                body: formData
+              })
+              .then(() => {
                 alert("Missatge enviat correctament!");
                 document.getElementById("contact-form").reset();
               })
