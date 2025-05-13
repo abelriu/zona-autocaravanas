@@ -115,14 +115,14 @@
             document.getElementById("contact-form").addEventListener("submit", function (e) {
               e.preventDefault();
 
-              const formData = new FormData();
+                const formData = new FormData();
                 formData.append("name", document.getElementById("name").value);
                 formData.append("email", document.getElementById("email").value);
                 formData.append("subject", document.getElementById("subject").value);
                 formData.append("message", document.getElementById("message").value);
                 formData.append("timestamp", new Date().toLocaleString());
 
-                fetch("https://script.google.com/macros/s/AKfycbyeiIq6CvKb7Lb1t-2LN2naGmDyokDDy0cwvzqUlI3rjV6ZsWhax6r_MS5tRNJKKRns6w/exec", {
+                fetch("https://script.google.com/macros/s/AKfycbz0sdQgkn6HHafUn5ip1id6AxzX3T__jIBXysBcElfIosuUHWAlAmfEVhWREgWKdrUdsA/exec", {
                   method: "POST",
                   body: formData
                 })
