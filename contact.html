@@ -79,62 +79,67 @@
     </nav>
     <!-- Close Header -->
                <section> 
-                <!-- Start Contact -->
+                 <!-- Start Contact -->
             <div class="container py-5">
-                <div class="row py-5">
-                   <form class="col-md-9 m-auto" id="contact-form">
-              <div class="row">
-                <div class="form-group col-md-6 mb-3">
-                  <label for="name">Nom</label>
-                  <input type="text" class="form-control mt-1" id="name" required>
-                </div>
-                <div class="form-group col-md-6 mb-3">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control mt-1" id="email" required>
-                </div>
+              <div class="row py-5">
+                <form class="col-md-9 m-auto" id="contact-form" action="https://formsubmit.co/axcaravan@gmail.com" method="POST">
+                  <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                      <label for="name">Nom</label>
+                      <input type="text" class="form-control mt-1" id="name" name="name" required>
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control mt-1" id="email" name="email" required>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="subject">Resum</label>
+                    <input type="text" class="form-control mt-1" id="subject" name="subject">
+                  </div>
+                  <div class="mb-3">
+                    <label for="message">Missatge</label>
+                    <textarea class="form-control mt-1" id="message" name="message" rows="6"></textarea>
+                  </div>
+                  <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="privacy" required>
+                    <label class="form-check-label" for="privacy">Accepto la política de privacitat</label>
+                  </div>
+
+                  <!-- Camps ocults de configuració -->
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="hidden" name="_template" value="box">
+                  <input type="hidden" name="_next" value="">
+
+                  <div class="text-end">
+                    <button type="submit" class="btn btn-success">Contacta</button>
+                  </div>
+                </form>
               </div>
-              <div class="mb-3">
-                <label for="subject">Resum</label>
-                <input type="text" class="form-control mt-1" id="subject">
-              </div>
-              <div class="mb-3">
-                <label for="message">Missatge</label>
-                <textarea class="form-control mt-1" id="message" rows="6"></textarea>
-              </div>
-              <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input" id="privacy" required>
-                <label class="form-check-label" for="privacy">Accepto la política de privacitat</label>
-              </div>
-              <input type="hidden" id="timestamp">
-              <div class="text-end">
-                <button type="submit" class="btn btn-success">Contacta</button>
-              </div>
-            </form>
+            </div>
 
             <script>
-            document.getElementById("contact-form").addEventListener("submit", function (e) {
-              e.preventDefault();
+              document.getElementById("contact-form").addEventListener("submit", function (e) {
+                e.preventDefault();
+                const form = e.target;
 
-                const formData = new FormData();
-                formData.append("name", document.getElementById("name").value);
-                formData.append("email", document.getElementById("email").value);
-                formData.append("subject", document.getElementById("subject").value);
-                formData.append("message", document.getElementById("message").value);
-                formData.append("timestamp", new Date().toLocaleString());
-
-                fetch("https://script.google.com/macros/s/AKfycbz0sdQgkn6HHafUn5ip1id6AxzX3T__jIBXysBcElfIosuUHWAlAmfEVhWREgWKdrUdsA/exec", {
+                fetch(form.action, {
                   method: "POST",
-                  body: formData
-                })
-                .then(() => {
-                  alert("Missatge enviat correctament!");
-                  document.getElementById("contact-form").reset();
-                })
-                .catch(error => {
-                  alert("Error en enviar el formulari.");
-                  console.error("Error:", error);
+                  body: new FormData(form),
+                  headers: {
+                    'Accept': 'application/json'
+                  }
+                }).then(response => {
+                  if (response.ok) {
+                    alert("Gràcies per contactar amb nosaltres!");
+                    form.reset();
+                  } else {
+                    alert("Hi ha hagut un error en l’enviament. Torna-ho a provar.");
+                  }
+                }).catch(error => {
+                  alert("Error en connectar amb el servidor.");
                 });
-            });
+              });
             </script>
 
      </section>
