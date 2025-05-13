@@ -78,76 +78,76 @@
         </div>
     </nav>
     <!-- Close Header -->
-   <section> 
-    <!-- Start Contact -->
-<div class="container py-5">
-    <div class="row py-5">
-       <form class="col-md-9 m-auto" id="contact-form">
-  <div class="row">
-    <div class="form-group col-md-6 mb-3">
-      <label for="name">Nom</label>
-      <input type="text" class="form-control mt-1" id="name" required>
-    </div>
-    <div class="form-group col-md-6 mb-3">
-      <label for="email">Email</label>
-      <input type="email" class="form-control mt-1" id="email" required>
-    </div>
-  </div>
-  <div class="mb-3">
-    <label for="subject">Resum</label>
-    <input type="text" class="form-control mt-1" id="subject">
-  </div>
-  <div class="mb-3">
-    <label for="message">Missatge</label>
-    <textarea class="form-control mt-1" id="message" rows="6"></textarea>
-  </div>
-  <div class="form-check mb-3">
-    <input type="checkbox" class="form-check-input" id="privacy" required>
-    <label class="form-check-label" for="privacy">Accepto la política de privacitat</label>
-  </div>
-  <input type="hidden" id="timestamp">
-  <div class="text-end">
-    <button type="submit" class="btn btn-success">Contacta</button>
-  </div>
-</form>
+               <section> 
+                <!-- Start Contact -->
+            <div class="container py-5">
+                <div class="row py-5">
+                   <form class="col-md-9 m-auto" id="contact-form">
+              <div class="row">
+                <div class="form-group col-md-6 mb-3">
+                  <label for="name">Nom</label>
+                  <input type="text" class="form-control mt-1" id="name" required>
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control mt-1" id="email" required>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="subject">Resum</label>
+                <input type="text" class="form-control mt-1" id="subject">
+              </div>
+              <div class="mb-3">
+                <label for="message">Missatge</label>
+                <textarea class="form-control mt-1" id="message" rows="6"></textarea>
+              </div>
+              <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="privacy" required>
+                <label class="form-check-label" for="privacy">Accepto la política de privacitat</label>
+              </div>
+              <input type="hidden" id="timestamp">
+              <div class="text-end">
+                <button type="submit" class="btn btn-success">Contacta</button>
+              </div>
+            </form>
 
-<script>
-document.getElementById("contact-form").addEventListener("submit", function (e) {
-  e.preventDefault();
+            <script>
+            document.getElementById("contact-form").addEventListener("submit", function (e) {
+              e.preventDefault();
 
-  document.getElementById("timestamp").value = new Date().toLocaleString();
+              document.getElementById("timestamp").value = new Date().toLocaleString();
 
-  const formData = new FormData();
-formData.append("name", document.getElementById("name").value);
-formData.append("email", document.getElementById("email").value);
-formData.append("subject", document.getElementById("subject").value);
-formData.append("message", document.getElementById("message").value);
-formData.append("timestamp", new Date().toLocaleString());
+              const formData = new FormData();
+            formData.append("name", document.getElementById("name").value);
+            formData.append("email", document.getElementById("email").value);
+            formData.append("subject", document.getElementById("subject").value);
+            formData.append("message", document.getElementById("message").value);
+            formData.append("timestamp", new Date().toLocaleString());
 
-fetch("https://script.google.com/macros/s/AKfycbxQihAocnGEmUP30uwsMhjIncyNmH8o6qh_CX2ECUr6e6k0j07T_x0q7hwK2H4O2gSCGA/exec", {
-  method: "POST",
-  body: formData
-})
-.then(response => response.json())
-.then(res => {
-  alert("Missatge enviat correctament!");
-  document.getElementById("contact-form").reset();
-})
-.catch(error => {
-  alert("Error en enviar el formulari.");
-  console.error("Error:", error);
-});
-  .then(response => response.json())
-  .then(res => {
-    alert("Missatge enviat correctament!");
-    document.getElementById("contact-form").reset();
-  })
-  .catch(error => {
-    alert("Error en enviar el formulari.");
-    console.error("Error:", error);
-  });
-});
-</script>
+            fetch("https://script.google.com/macros/s/AKfycbyhexQ1ij1JG12k9v_MZGbWiLzdOtFsbSCLKeC7PwVcGOoAVPT3qQCDi8K5d2mGUvsaBA/exec", {
+              method: "POST",
+              body: formData
+            })
+            .then(response => response.json())
+            .then(res => {
+              alert("Missatge enviat correctament!");
+              document.getElementById("contact-form").reset();
+            })
+            .catch(error => {
+              alert("Error en enviar el formulari.");
+              console.error("Error:", error);
+            });
+              .then(response => response.json())
+              .then(res => {
+                alert("Missatge enviat correctament!");
+                document.getElementById("contact-form").reset();
+              })
+              .catch(error => {
+                alert("Error en enviar el formulari.");
+                console.error("Error:", error);
+              });
+            });
+            </script>
 
      </section>
        <footer class="bg-dark" id="tempaltemo_footer">
