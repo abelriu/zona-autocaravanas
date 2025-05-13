@@ -119,27 +119,26 @@
             </div>
 
             <script>
-              document.getElementById("contact-form").addEventListener("submit", function (e) {
-                e.preventDefault();
-                const form = e.target;
+                    const formData = new FormData();
+                    formData.append("name", document.getElementById("name").value);
+                    formData.append("email", document.getElementById("email").value);
+                    formData.append("subject", document.getElementById("subject").value);
+                    formData.append("message", document.getElementById("message").value);
+                    formData.append("timestamp", new Date().toLocaleString());
 
-                fetch(form.action, {
-                  method: "POST",
-                  body: new FormData(form),
-                  headers: {
-                    'Accept': 'application/json'
-                  }
-                }).then(response => {
-                  if (response.ok) {
-                    alert("Gràcies per contactar amb nosaltres!");
-                    form.reset();
-                  } else {
-                    alert("Hi ha hagut un error en l’enviament. Torna-ho a provar.");
-                  }
-                }).catch(error => {
-                  alert("Error en connectar amb el servidor.");
-                });
-              });
+                    fetch("https://script.google.com/macros/s/LA_TEVA_URL/exec", {
+                      method: "POST",
+                      body: formData
+                    })
+                    .then(response => response.json())
+                    .then(res => {
+                      alert("Missatge enviat correctament!");
+                      document.getElementById("contact-form").reset();
+                    })
+                    .catch(error => {
+                      alert("Error en enviar el formulari.");
+                      console.error("Error:", error);
+                    });
             </script>
 
      </section>
