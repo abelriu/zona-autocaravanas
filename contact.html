@@ -116,24 +116,24 @@
               e.preventDefault();
 
               const formData = new FormData();
-              formData.append("name", document.getElementById("name").value);
-              formData.append("email", document.getElementById("email").value);
-              formData.append("subject", document.getElementById("subject").value);
-              formData.append("message", document.getElementById("message").value);
-              formData.append("timestamp", new Date().toLocaleString());
+                formData.append("name", document.getElementById("name").value);
+                formData.append("email", document.getElementById("email").value);
+                formData.append("subject", document.getElementById("subject").value);
+                formData.append("message", document.getElementById("message").value);
+                formData.append("timestamp", new Date().toLocaleString());
 
-              fetch("https://script.google.com/macros/s/AKfycbxTB5ROST8pJeRpeHlA2dfqHoFgK9-BPtblvGQaEz7Nx1D7UOifU1_jp1ZIGNwPlqFyzQ/exec", {
-                method: "POST",
-                body: formData
-              })
-              .then(() => {
-                alert("Missatge enviat correctament!");
-                document.getElementById("contact-form").reset();
-              })
-              .catch(error => {
-                alert("Error en enviar el formulari.");
-                console.error("Error:", error);
-              });
+                fetch("https://script.google.com/macros/s/AKfycbyeiIq6CvKb7Lb1t-2LN2naGmDyokDDy0cwvzqUlI3rjV6ZsWhax6r_MS5tRNJKKRns6w/exec", {
+                  method: "POST",
+                  body: formData
+                })
+                .then(() => {
+                  alert("Missatge enviat correctament!");
+                  document.getElementById("contact-form").reset();
+                })
+                .catch(error => {
+                  alert("Error en enviar el formulari.");
+                  console.error("Error:", error);
+                });
             });
             </script>
 
